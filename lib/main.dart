@@ -32,8 +32,6 @@ void main(){
         IconButton(onPressed: (){
           print("I'm a icon button");
         }, icon: Icon(Icons.add_a_photo,size: 50, color: Colors.red,)),
-
-
         InkWell(
           onTap: (){
             print("I'm inkwell");
