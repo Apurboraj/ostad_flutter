@@ -69,11 +69,11 @@ class _ContactListScreenState extends State<ContactListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
+        backgroundColor: Colors.grey,
         title: Text("Contact List",
           style: TextStyle(
             fontSize: 25,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -85,11 +85,18 @@ class _ContactListScreenState extends State<ContactListScreen> {
           children: [
             TextField(
               controller: nameController,
-              decoration: InputDecoration(labelText: "Name"),
+              decoration: InputDecoration(
+                labelText: "Name",
+                border: OutlineInputBorder(),
+              ),
             ),
+            SizedBox(height: 10),
             TextField(
               controller: numberController,
-              decoration: InputDecoration(labelText: "Number"),
+              decoration: InputDecoration(
+                labelText: "Number",
+                border: OutlineInputBorder(),
+              ),
               keyboardType: TextInputType.phone,
             ),
             SizedBox(height: 10),
@@ -97,7 +104,10 @@ class _ContactListScreenState extends State<ContactListScreen> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: addContact,
-                child: Text("Add"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey,
+                ),
+                child: Text("Add", style: TextStyle(color: Colors.white)),
               ),
             ),
             Expanded(
