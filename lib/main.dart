@@ -1,120 +1,125 @@
 import 'package:flutter/material.dart';
-void main(){
-  runApp(myApp());
+
+void main() {
+  runApp(MyApp());
 }
 
-
-class myApp extends StatelessWidget {
-  const myApp({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Ostad Fluter app',
-      home: Home(),
+      debugShowCheckedModeBanner: false,
+      home: ContactListScreen(),
     );
   }
 }
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class ContactListScreen extends StatefulWidget {
+  @override
+  _ContactListScreenState createState() => _ContactListScreenState();
+}
+
+class _ContactListScreenState extends State<ContactListScreen> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController numberController = TextEditingController();
+  List<Map<String, String>> contacts = [];
+
+  void addContact() {
+    String name = nameController.text.trim();
+    String number = numberController.text.trim();
+    if (name.isNotEmpty && number.isNotEmpty) {
+      setState(() {
+        contacts.add({'name': name, 'number': number});
+      });
+      nameController.clear();
+      numberController.clear();
+    }
+  }
+
+  void confirmDelete(int index) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Confirmation"),
+          content: Text("Are you sure for Delete?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.cancel),
+            ),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  contacts.removeAt(index);
+                });
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.delete, color: Colors.red),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text("Ostad Fluter app",style: TextStyle(
-          fontSize: 25,
-          color: Colors.white,
-        ),),
+
+        title: Text("Contact List",
+          style: TextStyle(
+            fontSize: 25,
+            color: Colors.black,
+          ),
+        ),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-      //     Center(
-      //       child: ElevatedButton(
-      //           style: ElevatedButton.styleFrom(
-      //             backgroundColor: Colors.green,
-      //             shape: RoundedRectangleBorder(
-      //               borderRadius: BorderRadius.circular(10),
-      //             ),
-      //           ),
-      //           onPressed: (){
-      //             print("This is a button");
-      //           }, child: Text("Send",style: TextStyle(color: Colors.white,fontSize: 25),)),
-      //     ),
-      //     Icon(Icons.add_a_photo,size: 50, color: Colors.red,),
-      //     TextButton(onPressed: (){
-      //       print("I'm text button");
-      //     }, child: Text("Click me",style: TextStyle(color: Colors.blue,fontSize: 25),)),
-      //     IconButton(onPressed: (){
-      //       print("I'm a icon button");
-      //     }, icon: Icon(Icons.add_a_photo,size: 50, color: Colors.red,)),
-      //     InkWell(
-      //       onTap: (){
-      //         print("I'm inkwell");
-      //       },
-      //       onHover: (value){
-      //         print("I'm inkwell hover");
-      //       },
-      //       onLongPress: (){
-      //         print("I'm inkwell long press");
-      //       },
-      //       child: Container(
-      //         height: 200,
-      //         width: 200,
-      //         margin: EdgeInsets.only(top: 50),
-      //         alignment: Alignment.center,
-      //         decoration: BoxDecoration(
-      //           color: Colors.deepPurpleAccent,
-      //           borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
-      //           border: Border.all(color: Colors.black,width: 3),
-      //           gradient: LinearGradient(colors: [Colors.yellow.shade300,Colors.orange,Colors.red,Colors.black],
-      //             begin:Alignment.topLeft,
-      //             end:Alignment.bottomRight,
-      //           ),
-      //           boxShadow: [
-      //             BoxShadow(
-      //                 color: Colors.grey,
-      //                 blurRadius: 10,
-      //                 spreadRadius: 5,
-      //                 offset: Offset(5, 5)
-      //             )
-      //           ],
-      //         ),
-      //         child: Text("This is a container",style: TextStyle(color: Colors.blue,fontSize: 25),),
-      //       ),
-      //     ),
-      //     GestureDetector(
-      //       child: Container(
-      //         height: 200,
-      //         width: 200,
-      //         margin: EdgeInsets.only(top: 50),
-      //         alignment: Alignment.center,
-      //         decoration: BoxDecoration(
-      //           color: Colors.deepPurpleAccent,
-      //           borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
-      //           border: Border.all(color: Colors.black,width: 3),
-      //           gradient: LinearGradient(colors: [Colors.green,Colors.orange.withOpacity(0.5),Colors.black],
-      //             begin:Alignment.topLeft,
-      //             end:Alignment.bottomRight,
-      //           ),
-      //           boxShadow: [
-      //             BoxShadow(
-      //                 color: Colors.grey,
-      //                 blurRadius: 10,
-      //                 spreadRadius: 5,
-      //                 offset: Offset(0, 5)
-      //             )
-      //           ],
-      //         ),
-      //         child: Text("This is a GestureDetector",style: TextStyle(color: Colors.blue,fontSize: 25),),
-      //       ),
-      //     ),
-        ],
-       ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: InputDecoration(labelText: "Name"),
+            ),
+            TextField(
+              controller: numberController,
+              decoration: InputDecoration(labelText: "Number"),
+              keyboardType: TextInputType.phone,
+            ),
+            SizedBox(height: 10),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: addContact,
+                child: Text("Add"),
+              ),
+            ),
+            Expanded(
+              child: Center(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: contacts.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      leading: Icon(Icons.person),
+                      title: Text(contacts[index]['name']!),
+                      subtitle: Text(contacts[index]['number']!),
+                      trailing: Icon(Icons.call, color: Colors.blue),
+                      onLongPress: () => confirmDelete(index),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
-
