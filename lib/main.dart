@@ -147,7 +147,7 @@ class Home extends StatelessWidget {
               _emailController.clear();
               _passwordController.clear();
             }, child: Text("Clear")),
-        
+
             Text("This is text 1", style: TextStyle(fontSize: 25, color: Colors.amber),),
             Divider(),
             Text("This is text 1", style: TextStyle(fontSize: 25, color: Colors.amber),),
@@ -177,28 +177,28 @@ class Home extends StatelessWidget {
             ElevatedButton.styleFrom(backgroundColor: Colors.green),
             )),
            ),
-        
-           SizedBox(
-             height: 250,
-             width: 250,
-             child: ListView.builder(
-               itemCount: 100,
-               itemBuilder: (context,index){
-                 return  ListTile(
-                   title: Text("Apurbo RajBongshi ${index}"),
-                   subtitle: Text("Software Engineer"),
-                   leading: Icon(Icons.account_circle,size: 50,),
-                   trailing: Icon(Icons.send),
-                   onTap: (){
-                     print("I'm LisrTile");
-                   },
-                   onLongPress: (){
-                     print("I'm ListTile long press");
-                   },
-                 );
-               },
-             ),
-           )
+
+            SizedBox(
+              height: 250,
+              width: 250,
+              child: ListView.builder(
+                itemCount: 100,
+                itemBuilder: (context,index){
+                  return  ListTile(
+                    title: Text("Apurbo RajBongshi ${index}"),
+                    subtitle: Text("Software Engineer"),
+                    leading: Icon(Icons.account_circle,size: 50,),
+                    trailing: Icon(Icons.send),
+                    onTap: (){
+                      print("I'm LisrTile");
+                    },
+                    onLongPress: (){
+                      print("I'm ListTile long press");
+                    },
+                  );
+                },
+              ),
+            )
         
         
         
