@@ -11,6 +11,7 @@ class myApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ostad Fluter app',
+      debugShowCheckedModeBanner: false,
       home: Home(),
     );
   }
@@ -21,6 +22,9 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _numberController = TextEditingController();
+    TextEditingController _emailController = TextEditingController();
+    TextEditingController _passwordController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
@@ -32,6 +36,115 @@ class Home extends StatelessWidget {
       ),
       body: Column(
         children: [
+
+          Padding(
+            padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
+            child: TextField(
+              controller: _numberController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                  filled: false,
+                  fillColor: Colors.amberAccent,
+                  hintText: "Enter your Phone Number",
+                  hintStyle: TextStyle(fontSize: 15,color: Colors.black),
+                  hintMaxLines: 2,
+                  labelText: "Number",
+                  labelStyle: TextStyle(fontSize: 25,color: Colors.blue),
+                  helperText: "Please enter your phone Number",
+                  helperStyle: TextStyle(fontSize: 15,color: Colors.green),
+                  helperMaxLines: 1,
+                  //prefixText: "Email: ",
+                  //suffixText: "@gmail.com",
+                  prefixIcon: Icon(Icons.phone),
+                  suffixIcon: Icon(Icons.send),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.amber,width: 5),
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(15),bottomRight: Radius.circular(15)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey,width: 2),
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(15),bottomRight: Radius.circular(15)),
+                  )
+              ),
+            ),
+          ),
+
+          Padding(
+          padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
+          child: TextField(
+            controller: _emailController,
+            decoration: InputDecoration(
+              filled: false,
+              fillColor: Colors.amberAccent,
+              hintText: "Enter your email",
+              hintStyle: TextStyle(fontSize: 15,color: Colors.black),
+              hintMaxLines: 2,
+              labelText: "Email",
+              labelStyle: TextStyle(fontSize: 25,color: Colors.blue),
+              helperText: "Please enter your email",
+              helperStyle: TextStyle(fontSize: 15,color: Colors.green),
+              helperMaxLines: 1,
+              //prefixText: "Email: ",
+              //suffixText: "@gmail.com",
+              prefixIcon: Icon(Icons.email),
+              suffixIcon: Icon(Icons.send),
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey,width: 5),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(15),bottomRight: Radius.circular(15)),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey,width: 2),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(15),bottomRight: Radius.circular(15)),
+              )
+            ),
+          ),
+        ),
+
+          Padding(
+            padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
+            child: TextField(
+              controller: _passwordController,
+              obscureText: true,
+              decoration: InputDecoration(
+                  filled: false,
+                  fillColor: Colors.amberAccent,
+                  hintText: "Enter your Password",
+                  hintStyle: TextStyle(fontSize: 15,color: Colors.black),
+                  hintMaxLines: 2,
+                  labelText: "Password",
+                  labelStyle: TextStyle(fontSize: 25,color: Colors.blue),
+                  helperText: "Please enter your email",
+                  helperStyle: TextStyle(fontSize: 15,color: Colors.green),
+                  helperMaxLines: 1,
+                  //prefixText: "Email: ",
+                  //suffixText: "@gmail.com",
+                  prefixIcon: Icon(Icons.password),
+                  suffixIcon: Icon(Icons.send),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.amber,width: 5),
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(15),bottomRight: Radius.circular(15)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey,width: 2),
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(15),bottomRight: Radius.circular(15)),
+                  )
+              ),
+            ),
+          ),
+ElevatedButton(onPressed: (){
+  _passwordController.text.length > 6 ? print("password is strong") : print("password is weak");
+  print(_numberController.text);
+  print(_emailController.text);
+  print(_passwordController.text);
+}, child: Text("Submit")),
+
+          ElevatedButton(onPressed: (){
+            _numberController.clear();
+            _emailController.clear();
+            _passwordController.clear();
+          }, child: Text("Clear")),
+
+///Flutter old class
       //     Center(
       //       child: ElevatedButton(
       //           style: ElevatedButton.styleFrom(
