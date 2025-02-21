@@ -141,8 +141,10 @@ Widget build(BuildContext context){
       Column(
         children: [
           ElevatedButton(onPressed: (){
-            Navigator.pop(context);
-          }, child: Text("Back")),
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => Home()));
+            //Navigator.pop(context);
+          }, child: Text("Back to homepage")),
 
         ],
         //Text("This is user pahe",style: TextStyle(fontSize: 26,color: Colors.amber),),
