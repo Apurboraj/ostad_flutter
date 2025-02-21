@@ -119,17 +119,16 @@ class Home extends StatelessWidget {
                       itemCount: 7,
                       itemBuilder: (context, index){
                         return Container(
-                          color: Colors.deepPurpleAccent,
+
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(10)
+                          ),
+
                           child: Center(
-                              child: Text(
-                                  "Item $index",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                              )),
+                              child: Icon(Icons.mobile_friendly,size: 45,color: Colors.white,)),
                         );
-                      }
-                      ),
+                      }),
                 ),
               ],
             ),
