@@ -9,6 +9,20 @@ class myApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.red,
+          appBarTheme: AppBarTheme(
+            color: Colors.red,
+            centerTitle: true
+          ),
+        scaffoldBackgroundColor: Colors.white,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.deepPurpleAccent,
+            foregroundColor: Colors.white,
+          )
+        )
+      ),
       title: 'Ostad Fluter app',
       debugShowCheckedModeBanner: false,
       home: Home(),
@@ -26,7 +40,7 @@ class Home extends StatelessWidget {
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+
         title: Text("Ostad Fluter app",style: TextStyle(
           fontSize: 25,
           color: Colors.white,
@@ -87,7 +101,36 @@ class Home extends StatelessWidget {
                           //     context,
                           //     MaterialPageRoute(builder: (context)=>userInfo()));
                         }
-                        }, child: Text("Submit",style: TextStyle(fontSize: 20,color: Colors.white),))),
+                        }, child: Text(
+                      "Submit",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ))),
+
+                SizedBox(
+                  height: 300,
+                  child: GridView.builder(
+                      gridDelegate:
+                      SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10),
+                      itemCount: 7,
+                      itemBuilder: (context, index){
+                        return Container(
+                          color: Colors.deepPurpleAccent,
+                          child: Center(
+                              child: Text(
+                                  "Item $index",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                              )),
+                        );
+                      }
+                      ),
+                ),
               ],
             ),
           ))
@@ -107,7 +150,11 @@ class userInfo extends StatelessWidget{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber,
+        title: Text("User page 1",style: TextStyle(
+          fontSize: 25,
+          color: Colors.white,
+        ),),
+
       ),
       body:
       Column(
@@ -135,7 +182,11 @@ class Page1 extends StatelessWidget{
 Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        title: Text("This is page 1",style: TextStyle(
+          fontSize: 25,
+          color: Colors.white,
+        ),),
+
       ),
       body:
       Column(
