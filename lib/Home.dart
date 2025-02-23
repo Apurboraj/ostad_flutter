@@ -23,11 +23,39 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Text(_count.toString(),style: TextStyle(fontSize: 60,fontWeight: FontWeight.bold,color:Colors.deepPurple),),
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurpleAccent,
+        title: Text("Simple To do list",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: incrementCountrt,child: Icon(Icons.add,size: 40,),),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                hintText: "Enter your task",
+                border: OutlineInputBorder(),
+                suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.add)),
+
+              ),
+            ),
+            SizedBox(height: 20,),
+
+            Expanded(
+              child: ListView.builder(
+                itemCount: 10,
+                  itemBuilder:(context,index){
+                  return Card(
+                    child: ListTile(
+                      title: Text("I have to do this at 8.00 am"),
+                      trailing: IconButton(onPressed: (){}, icon: Icon(Icons.delete,color: Colors.red,)),
+                    ),
+                  );
+                  }),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
