@@ -8,17 +8,27 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _count = 0;
+  List<String> _task = [];
+ TextEditingController _textController = TextEditingController();
 
-  incrementCountrt(){
+ _addTask(){
+   if(_textController.text.isNotEmpty){
+     setState(() {
+       _task.add(_textController.text);
+     });
+   }
+ }
+
+  _removeTask(int index){
+      setState(() {
+        _task.removeAt(index);
+      });
+    }
+  _removeAll(){
     setState(() {
-      _count++; // _count = _count+1
+      _task.clear();
     });
-
-
-    print(_count);
-  }
-
+  }  
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +42,11 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             TextField(
+              controller: _textController,
               decoration: InputDecoration(
                 hintText: "Enter your task",
                 border: OutlineInputBorder(),
-                suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.add)),
+                suffixIcon: IconButton(onPressed: _addTask, icon: Icon(Icons.add)),
 
               ),
             ),
@@ -43,12 +54,12 @@ class _HomeState extends State<Home> {
 
             Expanded(
               child: ListView.builder(
-                itemCount: 10,
+                itemCount: _task.length,
                   itemBuilder:(context,index){
                   return Card(
                     child: ListTile(
-                      title: Text("I have to do this at 8.00 am"),
-                      trailing: IconButton(onPressed: (){}, icon: Icon(Icons.delete,color: Colors.red,)),
+                      title: Text(_task[index]),
+                      trailing: IconButton(onPressed: _removeTask(index), icon: Icon(Icons.delete,color: Colors.red,)),
                     ),
                   );
                   }),
@@ -56,6 +67,8 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
+      
+      floatingActionButton: FloatingActionButton(onPressed: _removeAll,child: Icon(Icons.delete_forever,),),
     );
   }
 }
