@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
               decoration: InputDecoration(
                 hintText: "Enter your task",
                 border: OutlineInputBorder(),
-                suffixIcon: IconButton(onPressed: _addTask, icon: Icon(Icons.add)),
+                suffixIcon: IconButton(onPressed:()=> _addTask, icon: Icon(Icons.add)),
 
               ),
             ),
@@ -59,7 +59,7 @@ class _HomeState extends State<Home> {
                   return Card(
                     child: ListTile(
                       title: Text(_task[index]),
-                      trailing: IconButton(onPressed: _removeTask(index), icon: Icon(Icons.delete,color: Colors.red,)),
+                      trailing: IconButton(onPressed:()=> _removeTask(index), icon: Icon(Icons.delete,color: Colors.red,)),
                     ),
                   );
                   }),
