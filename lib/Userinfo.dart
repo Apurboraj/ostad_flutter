@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 class UserInfo extends StatelessWidget {
   final String? name;
