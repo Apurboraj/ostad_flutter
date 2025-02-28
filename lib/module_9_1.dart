@@ -87,7 +87,6 @@ class WrapExample extends StatelessWidget {
   }
 }
 
-
 class LayoutBuilderExample extends StatelessWidget {
   const LayoutBuilderExample({super.key});
 
@@ -129,7 +128,7 @@ class LayoutBuilderExample extends StatelessWidget {
                 child: Column(
                   children: [
                     ElevatedButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ScreenDemo(name: 'taufiq',)));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ScreenDemo(name: 'apurbo',)));
                     }, child: Text('2nd screen')),
                     Container(
                       height: 50,
@@ -157,8 +156,6 @@ class LayoutBuilderExample extends StatelessWidget {
     );
   }
 }
-
-
 
 class ScreenDemo extends StatelessWidget {
   final String name;
