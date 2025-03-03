@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'Home.dart';
 import 'module_9_1.dart';
+import 'module_9_2.dart';
 
 class myApp extends StatelessWidget {
   const myApp({super.key});
@@ -22,7 +23,7 @@ class myApp extends StatelessWidget {
                   backgroundColor: Colors.deepPurpleAccent,
                   foregroundColor: Colors.white))),
       title: 'Ostad Flutter app',
-      home: LayoutBuilderExample(),
+      home: ModuleNine(),
     );
   }
 }
