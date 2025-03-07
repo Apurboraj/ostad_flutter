@@ -116,11 +116,11 @@ class _Module11Class1State extends State<Module11Class1> {
             child: Row(
               children: [
                 SizedBox(width: 10,),
-                CityWidget(cityImage: 'https://static.toiimg.com/thumb/msid-90660347,width-748,height-499,resizemode=4,imgsize-145460/.jpg', cityName: 'Singapore', cityDescription: 'dfgr erfg  regfg rfgedrfg fgreg',),
+                CityWidget(cityImage: 'https://static.toiimg.com/thumb/msid-90660347,width-748,height-499,resizemode=4,imgsize-145460/.jpg', cityName: 'Singapore', cityDescription: 'Singapore, officially the Republic of Singapore.',),
                 SizedBox(width: 5.w,),
-                CityWidget(cityImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjHbz-igzXKXptbuSKfTlAWgsnKLSlxOmkHw&s', cityName: 'Nepal', cityDescription: 'dfgr erfg  regfg rfgedrfg fgreg',),
+                CityWidget(cityImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjHbz-igzXKXptbuSKfTlAWgsnKLSlxOmkHw&s', cityName: 'Nepal', cityDescription: 'Nepal country in South Asia.',),
                 SizedBox(width: 5.w,),
-                CityWidget(cityImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQocb8Op3B50O8g3WtQTlVzWWtgYnx4b8Ysg&s', cityName: 'Thailand', cityDescription: 'dfgr erfg  regfg rfgedrfg fgreg',),
+                CityWidget(cityImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQocb8Op3B50O8g3WtQTlVzWWtgYnx4b8Ysg&s', cityName: 'Thailand', cityDescription: 'Thailand is a Southeast Asian country.',),
               ],
             ),
           )
