@@ -5,6 +5,7 @@ import 'package:sizer/sizer.dart';
 
 import 'CalculatorApp.dart';
 import 'Home.dart';
+import 'module_12_class_1.dart';
 import 'module_9_1.dart';
 import 'module_9_2.dart';
 import 'module_9_3.dart';
@@ -22,18 +23,18 @@ class myApp extends StatelessWidget {
           builder: DevicePreview.appBuilder,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            brightness: Brightness.dark,
               primaryColor: Colors.red,
               appBarTheme: AppBarTheme(
                 color: Colors.red,
                 centerTitle: true,
               ),
-              scaffoldBackgroundColor: Colors.white,
               elevatedButtonTheme: ElevatedButtonThemeData(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepPurpleAccent,
                       foregroundColor: Colors.white))),
           title: 'Ostad Flutter app',
-          home: Watertracker(),
+          home: ExpenseTracker(),
         );
       }
     );
